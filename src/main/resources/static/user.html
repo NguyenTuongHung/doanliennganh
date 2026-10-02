@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tài khoản người chơi · Sân Thảo</title>
+  <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header"><a class="logo" href="/"><span class="logo-mark"></span>SÂN THẢO</a><nav><a href="/#tim-san">Tìm sân</a><a class="active" href="/user.html">Tài khoản</a></nav><button class="dashboard-logout" data-logout>Đăng xuất</button></header>
+  <main class="dashboard-wrap">
+    <section class="dashboard-welcome"><div><span class="eyebrow">KHU VỰC NGƯỜI CHƠI</span><h1>Xin chào, <span id="welcome-name">bạn</span></h1><p>Quản lý hồ sơ và theo dõi những lần đặt sân của bạn.</p></div><a class="btn btn-clay" href="/#tim-san">Tìm sân <span>→</span></a></section>
+    <div class="dashboard-grid">
+      <section class="dashboard-card profile-card" id="profile">
+        <div class="dashboard-card-heading"><div><span class="section-kicker">THÔNG TIN TÀI KHOẢN</span><h2>Hồ sơ người dùng</h2></div><span class="role-badge" id="profile-role">CUSTOMER</span></div>
+        <form id="profile-form" class="profile-form">
+          <label>Họ và tên<input name="fullName" maxlength="160" required></label>
+          <label>Email<input name="email" type="email" disabled></label>
+          <label>Số điện thoại<input name="phone" type="tel" maxlength="30" placeholder="Chưa cập nhật"></label>
+          <button class="btn btn-clay" type="submit">Lưu hồ sơ</button><p id="profile-message" role="status"></p>
+        </form>
+      </section>
+      <section class="dashboard-card bookings-card" id="bookings">
+        <div class="dashboard-card-heading"><div><span class="section-kicker">LỊCH SỬ CỦA BẠN</span><h2>Đặt sân gần đây</h2></div><button class="text-button" id="refresh-bookings">Tải lại ↻</button></div>
+        <div id="booking-history"><div class="dashboard-empty">Đang tải booking…</div></div>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="/js/user-dashboard.js"></script>
+</body>
+</html>

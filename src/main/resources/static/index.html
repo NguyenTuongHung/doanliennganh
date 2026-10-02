@@ -40,7 +40,7 @@
       </li>
     </ul>
     <div class="navcta">
-      <a href="#" class="txtlink">Đăng nhập</a>
+      <a href="#" class="txtlink" id="auth-link">Đăng nhập</a>
       <a href="#" class="btn btn-ghost-dark" style="padding:10px 20px">Chủ sân</a>
       <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -77,27 +77,24 @@
   </div>
 
   <div class="wrap">
-    <div class="search-card" id="tim-san">
+    <form class="search-card" id="tim-san" autocomplete="off">
       <div class="field">
         <label>Địa điểm</label>
-        <div class="control">📍 <input placeholder="Nhập quận, thành phố..."></div>
+        <div class="control">📍 <input id="search-city" placeholder="Nhập quận, thành phố..."></div>
       </div>
       <div class="field">
         <label>Loại sân</label>
-        <div class="sport-pills">
-          <button class="sport-pill active">Tất cả</button>
-          <button class="sport-pill">⚽ Bóng đá</button>
-          <button class="sport-pill">🏸 Cầu lông</button>
-          <button class="sport-pill">🎾 Tennis</button>
-          <button class="sport-pill">🏓 Pickleball</button>
+        <div class="sport-pills" id="sport-pills">
+          <button type="button" class="sport-pill active" data-sport-id="">Tất cả</button>
         </div>
       </div>
       <div class="field">
-        <label>Ngày & giờ</label>
-        <div class="control">🗓️ <input type="text" placeholder="Hôm nay, 18:00"></div>
+        <label>Ngày chơi</label>
+        <div class="control">🗓️ <input id="play-date" type="date" required></div>
       </div>
-      <button class="btn btn-clay">Tìm ngay</button>
-    </div>
+      <button class="btn btn-clay" type="submit">Tìm ngay</button>
+    </form>
+    <div class="booking-results" id="booking-results" aria-live="polite"></div>
   </div>
 </section>
 
@@ -360,6 +357,38 @@
   </div>
 </footer>
 
-<script th:src="@{/js/main.js}" src="/js/main.js"></script>
+<dialog id="hold-dialog" class="hold-dialog">
+  <button class="dialog-close" type="button" aria-label="Đóng">×</button>
+  <span class="eyebrow">GIỮ CHỖ 10 PHÚT</span>
+  <h2>Xác nhận khung giờ</h2>
+  <p id="hold-summary"></p>
+  <button id="open-auth-from-hold" class="btn btn-ghost-dark" type="button">Đăng nhập / tạo tài khoản</button>
+  <form id="hold-form">
+    <button class="btn btn-clay" type="submit">Giữ sân</button>
+  </form>
+  <div id="hold-result" role="status" aria-live="polite"></div>
+</dialog>
+<dialog id="auth-dialog" class="hold-dialog auth-dialog">
+  <button class="dialog-close" type="button" aria-label="Đóng">×</button>
+  <span class="eyebrow">TÀI KHOẢN SÂN THẢO</span>
+  <h2 id="auth-title">Đăng nhập</h2>
+  <div class="auth-tabs">
+    <button type="button" class="auth-tab active" data-auth-mode="login">Đăng nhập</button>
+    <button type="button" class="auth-tab" data-auth-mode="register">Tạo tài khoản</button>
+  </div>
+  <form id="login-form" class="auth-form">
+    <label>Email<input name="email" type="email" autocomplete="username" required></label>
+    <label>Mật khẩu<input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="btn btn-clay" type="submit">Đăng nhập</button>
+  </form>
+  <form id="register-form" class="auth-form" hidden>
+    <label>Họ tên<input name="fullName" type="text" maxlength="160" autocomplete="name" required></label>
+    <label>Email<input name="email" type="email" maxlength="190" autocomplete="email" required></label>
+    <label>Mật khẩu (ít nhất 8 ký tự)<input name="password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required></label>
+    <button class="btn btn-clay" type="submit">Tạo tài khoản khách hàng</button>
+  </form>
+  <div id="auth-message" role="status" aria-live="polite"></div>
+</dialog>
+<script type="module" th:src="@{/js/main.js}" src="/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản trị sàn · Sân Thảo</title>
+  <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body class="dashboard-page admin-page">
+  <header class="dashboard-header"><a class="logo" href="/admin.html"><span class="logo-mark">+</span>QUẢN TRỊ SÂN THẢO</a><nav><a class="active" href="#overview">Tổng quan</a><a href="#pending-venues">Duyệt cơ sở</a></nav><div class="admin-identity"><span id="admin-email"></span><button class="dashboard-logout" data-logout>Đăng xuất</button></div></header>
+  <main class="dashboard-wrap">
+    <section class="dashboard-welcome admin-welcome"><div><span class="eyebrow">SUPER ADMIN</span><h1>Bảng điều khiển</h1><p>Quản lý hoạt động và duyệt cơ sở tham gia sàn.</p></div><button class="btn btn-ghost-dark" id="refresh-admin">Làm mới dữ liệu ↻</button></section>
+    <section class="admin-metrics" id="overview">
+      <article class="metric-card"><span>Người dùng</span><b id="metric-users">—</b></article>
+      <article class="metric-card"><span>Cơ sở thể thao</span><b id="metric-venues">—</b></article>
+      <article class="metric-card metric-attention"><span>Chờ duyệt</span><b id="metric-pending">—</b></article>
+      <article class="metric-card"><span>Booking đang hoạt động</span><b id="metric-bookings">—</b></article>
+    </section>
+    <section class="dashboard-card admin-venues" id="pending-venues">
+      <div class="dashboard-card-heading"><div><span class="section-kicker">PARTNER ONBOARDING</span><h2>Cơ sở chờ phê duyệt</h2></div><span class="role-badge">SUPER_ADMIN</span></div>
+      <div id="pending-venue-list"><div class="dashboard-empty">Đang tải hồ sơ…</div></div>
+    </section>
+    <p id="admin-message" role="status" class="admin-message"></p>
+  </main>
+  <script type="module" src="/js/admin-dashboard.js"></script>
+</body>
+</html>
